@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1, h2, h3 {
+    color: #007bff;
+}
+
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+.scrollable {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.file-content-display {
+    max-height: 300px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.file-content, .binary-representation, .shannon-fano-codes, .lzw-dictionary {
+    white-space: pre-wrap;
+    font-family: monospace;
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.download-link {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.download-link:hover {
+    background-color: #0056b3;
+}
+
+table thead tr {
+    background-color: #007bff;
+    color: white;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.upload-form {
+    text-align: center;
+    background-color: #007bff;
+    padding: 40px;
+    border-radius: 8px;
+    color: white;
+    position: relative;
+}
+
+.upload-form input[type="file"] {
+    display: none;
+}
+
+.upload-form label {
+    display: block;
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px auto;
+    font-size: 1.2em;
+}
+
+.upload-form button {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 20px auto;
+    display: block;
+}
+
+.upload-form button:hover {
+    background-color: #003f7f;
+}
+
+.drag-and-drop {
+    border: 2px dashed #ccc;
+    padding: 60px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #333;
+    cursor: pointer;
+    background-color: #eee;
+    position: relative;
+    font-size: 1.2em;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.drag-and-drop span {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1.5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.file-uploaded {
+    position: relative;
+    top: 10px;
+    margin-top: 10px;
+    font-size: 1em;
+    color: white;
+    display: block;
+    text-align: center;
+}
+
+.home-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+.home-button:hover {
+    background-color: #0056b3;
+}
+
+.comparison-section {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.footer {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 2px solid #0056b3;
+}
+
+.comparison-image {
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compression Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Compression Results</h1>
+
+        <table>
+            <tr>
+                <th colspan="2">File Content Display</th>
+            </tr>
+            <tr>
+                <td colspan="2" class="file-content">{{ file_info.content_display }}</td>
+            </tr>
+        </table>
+
+        <h2>Shannon-Fano Compression</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Filename</th>
+                    <th>Original Size (Bits)</th>
+                    <th>Shannon-Fano Compressed Size (Bits)</th>
+                    <th>Shannon-Fano Compression Ratio (%)</th>
+                    <th>Redundancy</th>
+                    <th>Shannon-Fano Download</th>
+                    <th>Shannon-Fano Decompressed Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ file_info.filename }}</td>
+                    <td>{{ file_info.original_size }}</td>
+                    <td>{{ file_info.shannon_fano_compressed_size }}</td>
+                    <td>{{ file_info.shannon_fano_compression_ratio|round(2) }}</td>
+                    <td>{{ file_info.shannon_fano_redundancy|round(2) }}</td>
+                    <td><a href="{{ shannon_fano_download }}" class="download-link">Download Shannon-Fano Compressed File</a></td>
+                    <td><a href="{{ shannon_fano_decompressed_download }}" class="download-link">Download Shannon-Fano Decompressed File</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Compression Algorithm</h2>
+        <div class="scrollable">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 122.72px;">Compression Algorithm</th>
+                        <th style="width: 656.84px;">Binary Representation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Shannon-Fano Compression</td>
+                        <td class="binary-representation">{{ shannon_fano_binary_representation }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Shannon-Fano Codes</h3>
+        <div class="shannon-fano-codes scrollable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Character</th>
+                        <th>Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for char, code in shannon_fano_codes.items() %}
+                    <tr>
+                        <td>{{ char }}</td>
+                        <td>{{ code }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h2>LZW Compression</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Filename</th>
+                    <th>Original Size (Bits)</th>
+                    <th>LZW Compressed Size (Bits)</th>
+                    <th>LZW Compression Ratio (%)</th>
+                    <th>Redundancy</th>
+                    <th>LZW Download</th>
+                    <th>LZW Decompressed Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ file_info.filename }}</td>
+                    <td>{{ file_info.original_size }}</td>
+                    <td>{{ file_info.lzw_compressed_size }}</td>
+                    <td>{{ file_info.lzw_compression_ratio|round(2) }}</td>
+                    <td>{{ file_info.lzw_redundancy|round(2) }}</td>
+                    <td><a href="{{ lzw_download }}" class="download-link">Download LZW Compressed File</a></td>
+                    <td><a href="{{ lzw_decompressed_download }}" class="download-link">Download LZW Decompressed File</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Compression Algorithm</h2>
+        <div class="scrollable">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 122.72px;">Compression Algorithm</th>
+                        <th style="width: 656.84px;">Binary Representation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LZW Compression</td>
+                        <td class="binary-representation">{{ lzw_binary_representation }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>LZW Dictionary</h3>
+        <div class="lzw-dictionary scrollable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pattern</th>
+                        <th>Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pattern, code in lzw_dictionary.items() %}
+                    <tr>
+                        <td>{{ pattern }}</td>
+                        <td>{{ code }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="/" class="home-button">Back to Main Page</a>
+</body>
+</html>

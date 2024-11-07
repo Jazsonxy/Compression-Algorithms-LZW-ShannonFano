@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Upload File</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form" id="upload-form">
+            <label for="file-upload" class="custom-file-upload">
+                Choose File
+            </label>
+            <input type="file" name="file" id="file-upload" accept=".txt,.pdf,.doc,.docx">
+            <div class="drag-and-drop" id="drag-and-drop">
+                <span>DROP FILE HERE</span>
+            </div>
+            <div id="file-uploaded" class="file-uploaded" style="display: none;"></div>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <div class="container comparison-section">
+        <h2>Perbandingan antara Algoritma Shannon-Fano dan Lempel-Ziv-Welch (LZW)</h2>
+        <p>Website ini bertujuan sebagai perbandingan kompresi Shannon-Fano dan LZW dengan penilaian yang mengacu pada nilai kompresi rasio (CR) dan redundancy. File yang digunakan dalam perbandingan ini hanya berisi teks, tanpa foto, video, atau audio. Algoritma Shannon-Fano adalah salah satu teknik kompresi yang paling awal, yang berfokus pada penyusunan ulang simbol-simbol dalam sebuah file berdasarkan frekuensinya. Metode ini menghasilkan kode-kode dengan panjang variabel, di mana simbol-simbol yang lebih sering muncul diberi kode lebih pendek, sedangkan simbol-simbol yang jarang muncul diberi kode lebih panjang. Pendekatan ini mampu mengurangi ukuran file dengan signifikan, terutama jika file tersebut memiliki pola distribusi frekuensi yang dapat diprediksi.</p>
+        <p>Di sisi lain, algoritma Lempel-Ziv-Welch (LZW) adalah metode kompresi yang lebih modern yang tidak hanya bergantung pada frekuensi simbol tetapi juga pada pola berulang dalam data. LZW bekerja dengan membangun tabel string yang dihasilkan dari input data secara dinamis, yang memungkinkan algoritma ini untuk menangani berbagai jenis file teks dengan lebih efisien. Karena kemampuannya dalam mengidentifikasi dan menggantikan pola berulang, LZW sering kali menghasilkan rasio kompresi yang lebih tinggi dibandingkan dengan Shannon-Fano, terutama pada file teks yang memiliki banyak pengulangan.</p>
+        <p>Penilaian kompresi dalam website ini didasarkan pada dua metrik utama: compression ratio (CR) dan redundancy. Compression ratio adalah ukuran yang menggambarkan seberapa banyak ukuran file asli telah dikurangi oleh algoritma kompresi. Semakin tinggi nilai CR, semakin baik performa algoritma dalam mengurangi ukuran file. Redundancy, di sisi lain, mengukur jumlah informasi berlebih dalam file asli yang bisa dihilangkan tanpa mengurangi kualitas data. Dalam konteks ini, nilai redundancy yang lebih rendah menunjukkan bahwa algoritma kompresi telah berhasil menghilangkan lebih banyak informasi berlebih, membuat data yang dikompresi lebih efisien.</p>
+        <p>Dengan hanya menggunakan file teks dalam perbandingan ini, kita dapat memfokuskan analisis pada efektivitas algoritma dalam mengompresi data tekstual murni. Hal ini penting karena teks memiliki karakteristik khusus yang berbeda dengan jenis data lainnya seperti gambar, audio, atau video. Teks sering kali memiliki pola pengulangan yang bisa dieksploitasi oleh algoritma kompresi, dan perbandingan antara Shannon-Fano dan LZW dapat memberikan wawasan mendalam tentang bagaimana setiap algoritma memanfaatkan pola-pola ini untuk mengurangi ukuran file.</p>
+        <p>Pada akhirnya, tujuan dari website ini adalah untuk memberikan pemahaman yang komprehensif tentang bagaimana algoritma Shannon-Fano dan LZW berfungsi dalam konteks kompresi teks. Melalui visualisasi hasil kompresi dan analisis metrik seperti compression ratio dan redundancy, pengguna dapat melihat langsung kekuatan dan kelemahan masing-masing algoritma. Diharapkan, informasi yang disajikan dapat membantu pengguna dalam memilih metode kompresi yang paling sesuai untuk kebutuhan mereka, baik itu dalam konteks akademis, penelitian, atau aplikasi praktis lainnya.</p>
+    </div>
+
+       <div class="footer">
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </div>
+
+    <script>
+        const fileUpload = document.getElementById('file-upload');
+        const fileUploaded = document.getElementById('file-uploaded');
+        const dragAndDrop = document.getElementById('drag-and-drop');
+        const uploadForm = document.getElementById('upload-form');
+
+        fileUpload.addEventListener('change', () => {
+            const fileName = fileUpload.files[0]?.name || '';
+            fileUploaded.textContent = fileName ? `Uploaded: ${fileName}` : '';
+            fileUploaded.style.display = fileName ? 'block' : 'none';
+        });
+
+        dragAndDrop.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dragAndDrop.style.backgroundColor = '#ddd';
+        });
+
+        dragAndDrop.addEventListener('dragleave', () => {
+            dragAndDrop.style.backgroundColor = '#eee';
+        });
+
+        dragAndDrop.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUpload.files = e.dataTransfer.files;
+            const fileName = fileUpload.files[0]?.name || '';
+            fileUploaded.textContent = fileName ? `Uploaded: ${fileName}` : '';
+            fileUploaded.style.display = fileName ? 'block' : 'none';
+            dragAndDrop.style.backgroundColor = '#eee';
+        });
+
+        uploadForm.addEventListener('submit', (e) => {
+            if (!fileUpload.files.length) {
+                e.preventDefault();
+                alert('Please choose a file to upload.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Shannon-Fano dan Lempel-Ziv-Welch (LZW) adalah dua algoritma kompresi yang digunakan untuk mengurangi ukuran teks. Shannon-Fano menggunakan prinsip entropi untuk membuat kode biner yang lebih pendek untuk karakter yang sering muncul, sedangkan LZW menggunakan pendekatan berbasis kamus untuk menggantikan pola berulang dalam teks dengan kode yang lebih pendek.
